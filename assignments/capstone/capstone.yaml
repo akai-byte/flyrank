@@ -1,0 +1,10 @@
+run: docker compose up -d && npm install && npm start
+seed: psql "$DATABASE_URL" -f db/schema.sql
+test: npm test
+base_url: http://localhost:3000
+endpoints:
+  - GET /health
+  - GET /api/widgets/:id/config
+  - POST /api/submissions
+  - GET /api/dashboard/submissions
+  - GET /api/dashboard/stats
